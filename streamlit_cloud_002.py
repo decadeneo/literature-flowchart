@@ -9,7 +9,7 @@ import shutil # 用于查找 mmdc
 from urllib.parse import quote
 from pathlib import Path
 # from streamlit.components.v1 import html # 不再需要
-from streamlit_markdown import st_markdown # 导入 streamlit-markdown
+# from streamlit_markdown import st_markdown # 导入 streamlit-markdown 移除 streamlit-markdown
 
 # 设置页面标题和布局
 st.set_page_config(
@@ -235,10 +235,10 @@ if st.button("批量生成流程图", type="primary", disabled=not uploaded_file
                         # 更新 session_state
                         st.session_state[mermaid_key] = edited_mermaid_code
 
-                        st.markdown("##### 流程图预览 (实时渲染)")
-                        # 使用 st_markdown 渲染编辑后的代码
-                        # 添加 ```mermaid 包裹代码
-                        st_markdown(f"```mermaid\n{edited_mermaid_code}\n```", key=f"render_{mermaid_key}") # 唯一 key
+                        st.markdown("##### 流程图预览")
+                        # 添加渲染按钮
+                        if st.button("渲染流程图", key=f"render_button_{mermaid_key}"):
+                            st.code(edited_mermaid_code, language="mermaid")
 
                         # 添加链接到在线 Mermaid 编辑器的按钮
                         mermaid_editor_url = f"https://mermaid.live/edit#code={quote(edited_mermaid_code)}"
