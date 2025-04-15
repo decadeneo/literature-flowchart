@@ -20,7 +20,7 @@
 1. 克隆仓库：
 
 ```bash
-git clone https://github.com/decadeneo/literature-flowchart.git
+git clone https://github.com/decadeneo/-literature-flowchart.git
 cd literature-flowchart
 ```
 
@@ -35,6 +35,13 @@ pip install -r requirements.txt
 ```bash
 npm install -g @mermaid-js/mermaid-cli
 ```
+
+## 脚本区分
+
+streamlit_run.py为本地版
+
+streamlit_cloud.py为部署到streamlit cloud的网页版，作简单体验使用
+
 
 ## 使用方法
 
