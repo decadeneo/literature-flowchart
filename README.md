@@ -70,6 +70,6 @@ streamlit run streamlit_run.py
 ## 在线演示
 
 你可以在Streamlit Cloud上访问该应用：
-[应用链接将在部署后更新]
+https://jkghx2zvrogyhrguozeynv.streamlit.app/
 
 ## License
