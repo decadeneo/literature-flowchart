@@ -274,7 +274,7 @@ def render_mermaid_to_image(mermaid_code: str, output_path: str, filename="未�
 
             # 使用 mmdc.cmd 的绝对路径（从环境变量或固定路径获取）
             # 尝试从环境变量获取，否则使用硬编码路径
-            mmdc_path = os.environ.get("MMDC_PATH", r"C:\Users\15193\AppData\Roaming\npm\mmdc.cmd")
+            mmdc_path = os.environ.get("MMDC_PATH", r"C:\Users\caixukun\AppData\Roaming\npm\mmdc.cmd")
             if not Path(mmdc_path).is_file():
                  st.error(f"错误 [{filename}]: 找不到 mermaid-cli (mmdc) 执行文件: {mmdc_path}。请确保已安装并配置路径。")
                  # 尝试清理临时文件
