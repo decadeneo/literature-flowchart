@@ -4,8 +4,6 @@ import json
 from pypdf import PdfReader
 from pathlib import Path
 from streamlit.components.v1 import html
-from time import sleep
-from streamlit_js_eval import streamlit_js_eval
 
 # 设置页面标题和布局
 st.set_page_config(
@@ -146,14 +144,6 @@ Mermaid 代码：
         st.error(f"错误 [{filename}]: 处理 API 响应时发生错误: {e}")
         return {"mermaid_code": None, "abstract": None}
 
-# 初始化session_state
-if "svg_height" not in st.session_state:
-    st.session_state["svg_height"] = 200
-if "previous_mermaid" not in st.session_state:
-    st.session_state["previous_mermaid"] = ""
-if "previous_font_size" not in st.session_state:
-    st.session_state["previous_font_size"] = 18
-
 def mermaid(code: str, font_size: int = 18) -> None:
     """使用HTML组件渲染Mermaid图表"""
     html(
@@ -166,7 +156,7 @@ def mermaid(code: str, font_size: int = 18) -> None:
             mermaid.initialize({{ startOnLoad: true, theme: "default", themeVariables: {{ fontSize: "{font_size}px" }} }});
         </script>
         """,
-        height=st.session_state["svg_height"] + 50,
+        height=600,  # 固定高度
     )
 
 # 主应用界面
@@ -244,17 +234,6 @@ if st.button("批量生成流程图", type="primary", disabled=not uploaded_file
                         # 显示流程图
                         st.markdown("##### 流程图预览")
                         mermaid(mermaid_code)
-                        if (
-                            mermaid_code != st.session_state["previous_mermaid"]
-                            or 18 != st.session_state["previous_font_size"]
-                        ):
-                            st.session_state["previous_mermaid"] = mermaid_code
-                            st.session_state["previous_font_size"] = 18
-                            sleep(1)
-                            streamlit_js_eval(
-                                js_expressions='parent.document.getElementsByTagName("iframe")[0].contentDocument.getElementsByClassName("mermaid")[0].getElementsByTagName("svg")[0].getBBox().height',
-                                key="svg_height",
-                            )
 
             except Exception as e:
                 st.error(f"错误 [{uploaded_file.name}]: 处理文件时发生意外错误: {e}")
