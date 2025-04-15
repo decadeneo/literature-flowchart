@@ -20,7 +20,7 @@
 1. 克隆仓库：
 
 ```bash
-git clone https://github.com/[你的用户名]/literature-flowchart.git
+git clone https://github.com/decadeneo/literature-flowchart.git
 cd literature-flowchart
 ```
 
