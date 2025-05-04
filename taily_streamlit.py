@@ -348,8 +348,7 @@ class AcademicPaperReviewer:
             return f"处理错误: {e}"
 
 def main():
-    # 加载环境变量
-    load_dotenv()
+
     
     # 页面标题
     st.title("📚 学术论文评审系统")
