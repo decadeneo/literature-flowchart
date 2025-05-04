@@ -3,7 +3,6 @@ import json
 import re
 from typing import List, Dict, Any
 import streamlit as st
-from dotenv import load_dotenv
 from tavily import TavilyClient
 import datetime
 
